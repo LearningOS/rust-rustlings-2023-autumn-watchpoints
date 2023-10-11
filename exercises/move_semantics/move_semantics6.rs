@@ -4,8 +4,7 @@
 // 除了添加或删除引用之外，您无法更改任何内容。
 // Execute `rustlings hint move_semantics6` or use the `hint` watch subcommand
 // for a hint.
-
-
+// 
 fn main() {
     // class string stack{ptr--->head}
     let data = "Rust is great!".to_string();
