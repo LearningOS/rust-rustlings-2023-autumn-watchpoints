@@ -20,7 +20,6 @@
 //
 // No hints this time!
 
-// I AM NOT DONE
 
 pub enum Command {
     Uppercase,
@@ -30,13 +29,46 @@ pub enum Command {
 
 mod my_module {
     use super::Command;
+    fn myuppercase(string: &str) -> String {
+        string.to_uppercase()
+    }
+
+    fn mytrim(string: &str) -> String {
+        string.trim().to_string()
+    }
+
+    fn append_bar(string: &str, count: usize) -> String {
+        let bar_list: Vec<&str> = Vec::new(); //empty vec
+        let mut result = String::from(string);
+        for _ in 0..count {
+            result += "bar";
+        }
+        result
+    }
 
     // TODO: Complete the function signature!
-    pub fn transformer(input: ???) -> ??? {
+    // - The input is going to be a Vector of a 2-length tuple,
+    // - the first element is the string, the second one is the command.
+    // - The output element is going to be a Vector of strings.
+    pub fn transformer(input: Vec<(String,Command)>) -> Vec<String> {
         // TODO: Complete the output declaration!
-        let mut output: ??? = vec![];
+        let mut output: Vec<String> = vec![];
         for (string, command) in input.iter() {
             // TODO: Complete the function body. You can do it!
+            // https://doc.rust-lang.org/book/ch06-02-match.html
+            match command {
+                Command::Uppercase => output.push(myuppercase(&string)),
+                Command::Trim => output.push(mytrim(&string)),
+                Command::Append(usize) => output.push(append_bar(&string,*usize)),
+                // Command::Append(usize) =>  {
+                //     let mut ans = String::new();
+                //     for i in 0..*usize {
+                //         ans += &string.clone();
+                //     }
+                //     output.push(format!("{}bar", ans));
+                // }
+            }
+
         }
         output
     }
@@ -45,7 +77,7 @@ mod my_module {
 #[cfg(test)]
 mod tests {
     // TODO: What do we need to import to have `transformer` in scope?
-    use ???;
+    use crate::my_module::transformer;
     use super::Command;
 
     #[test]
@@ -56,6 +88,7 @@ mod tests {
             ("foo".into(), Command::Append(1)),
             ("bar".into(), Command::Append(5)),
         ]);
+        //The output element is going to be a Vector of strings.
         assert_eq!(output[0], "HELLO");
         assert_eq!(output[1], "all roads lead to rome!");
         assert_eq!(output[2], "foobar");
