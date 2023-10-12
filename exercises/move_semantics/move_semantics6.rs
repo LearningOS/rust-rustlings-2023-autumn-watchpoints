@@ -3,7 +3,7 @@
 // You can't change anything except adding or removing references.
 // 除了添加或删除引用之外，您无法更改任何内容。
 // Execute `rustlings hint move_semantics6` or use the `hint` watch subcommand
-// for a hint.
+// for a hint. 1
 // 
 fn main() {
     // class string stack{ptr--->head}
