@@ -13,8 +13,11 @@
 //
 // Execute `rustlings hint hashmaps3` or use the `hint` watch subcommand for a
 // hint.
+//您必须构建一个包含球队名称、球队进球和球队失球的得分表。
+//构建分数表的一种方法是使用哈希图。
+//该解决方案部分编写为使用 Hashmap，完成它以通过测试。
 
-// I AM NOT DONE
+
 
 use std::collections::HashMap;
 
@@ -39,6 +42,23 @@ fn build_scores_table(results: String) -> HashMap<String, Team> {
         // will be the number of goals conceded from team_2, and similarly
         // goals scored by team_2 will be the number of goals conceded by
         // team_1.
+
+        let team_1 = scores.entry(team_1_name).or_insert(Team {
+            goals_scored: 0,
+            goals_conceded: 0,
+        });
+        team_1.goals_scored += team_1_score;
+        team_1.goals_conceded += team_2_score;
+        
+        // Adding a Key and Value Only If a Key Isn’t Present
+        //The or_insert method on Entry is defined to return a mutable reference to the value for the corresponding Entry key if that key exists, 
+        // and if not, inserts the parameter as the new value for this key and returns a mutable reference to the new value. 
+        let team_2 = scores.entry(team_2_name).or_insert(Team {
+            goals_scored: 0,
+            goals_conceded: 0,
+        });
+        team_2.goals_scored += team_2_score;
+        team_2.goals_conceded += team_1_score;
     }
     scores
 }
