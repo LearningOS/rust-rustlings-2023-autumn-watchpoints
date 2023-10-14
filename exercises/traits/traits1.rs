@@ -7,15 +7,20 @@
 // Execute `rustlings hint traits1` or use the `hint` watch subcommand for a
 // hint.
 
-// I AM NOT DONE
 
 trait AppendBar {
     fn append_bar(self) -> Self;
 }
-
+//Rust避免了经典的继承模型，而是采用了"组合"和"实现"的方式来实现抽象行为。
 impl AppendBar for String {
     // TODO: Implement `AppendBar` for type `String`.
+    fn append_bar(self) -> Self {
+        let result = format!("{}Bar", self);
+        result
+    }
 }
+//Self：实现Trait的类型的别名
+//self：方法参数 fn f(self) {}，等价于fn f(self: Self) {}
 
 fn main() {
     let s = String::from("Foo");
