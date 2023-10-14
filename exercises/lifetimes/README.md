@@ -17,6 +17,6 @@ has a similar style of exercises to Rustlings, but is all about
 learning to write lifetime annotations.
 
 ## Further information
-
-- [Lifetimes (in Rust By Example)](https://doc.rust-lang.org/stable/rust-by-example/scope/lifetime.html)
+https://doc.rust-lang.org/stable/rust-by-example/scope/lifetime.html)
+- [Lifetimes (in Rust By Example)](
 - [Validating References with Lifetimes](https://doc.rust-lang.org/book/ch10-03-lifetime-syntax.html)
