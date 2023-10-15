@@ -40,10 +40,33 @@ impl Default for Person {
 // If while parsing the age, something goes wrong, then return the default of
 // Person Otherwise, then return an instantiated Person object with the results
 
-// I AM NOT DONE
 
+// 字符串什麽格式
+// impl From<&str> for Person {
+//     fn from(s: &str) -> Person {
+//     }
+// }
+// assert_eq!("cfg".split_once('='), None);
+// assert_eq!("cfg=".split_once('='), Some(("cfg", "")));
+// assert_eq!("cfg=foo".split_once('='), Some(("cfg", "foo")));
+// assert_eq!("cfg=foo=bar".split_once('='), Some(("cfg", "foo=bar")));
 impl From<&str> for Person {
     fn from(s: &str) -> Person {
+        match s.split_once(',') {
+            Some((first, second)) => {
+                if first.is_empty() {
+                    Person::default()
+                } else if let Ok(a) = second.parse::<usize>() {
+                    Person {
+                        name: first.into(),
+                        age: a,
+                    }
+                } else {
+                    Person::default()
+                }
+            },
+            _ => Person::default(),
+        }
     }
 }
 
