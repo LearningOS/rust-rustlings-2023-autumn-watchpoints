@@ -18,11 +18,14 @@
 //
 // Execute `rustlings hint box1` or use the `hint` watch subcommand for a hint.
 
-// I AM NOT DONE
 
 #[derive(PartialEq, Debug)]
 pub enum List {
-    Cons(i32, List),
+    //Cons(i32, List),
+    Cons(i32, Box<List>),
+    //---- recursive without indirection
+    // `Box` - a smart pointer used to store data on the heap, which also allows us
+   // to wrap a recursive type.
     Nil,
 }
 
@@ -34,12 +37,18 @@ fn main() {
     );
 }
 
+//enum
 pub fn create_empty_list() -> List {
-    todo!()
+    //todo!()
+    List::Nil
 }
 
 pub fn create_non_empty_list() -> List {
-    todo!()
+    //todo!() 
+    // Step 2: Create a non-empty list with Cons and Box
+    let tail = Box::new(List::Nil);
+    List::Cons(42, tail)
+
 }
 
 #[cfg(test)]
